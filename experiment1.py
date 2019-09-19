@@ -23,7 +23,7 @@ def inRoom2(state):
 #two rooms start end 
 
 def runPolicies(demonstrations=20,
-		super_iterations=100,
+		super_iterations=10000,
 		sub_iterations=0,
 		learning_rate=10,
 		env_noise=0.3):
