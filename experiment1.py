@@ -28,7 +28,7 @@ def runPolicies(demonstrations=20,
 		learning_rate=10,
 		env_noise=0.3):
 
-	m  = GridWorldModel(2, statedim=(10,20))
+	m  = GridWorldModel(2, statedim=(8,9))
 
 	MAP_NAME = 'resources/GridWorldMaps/experiment1.txt'
 	gmap = np.loadtxt(MAP_NAME, dtype=np.uint8)
@@ -40,6 +40,7 @@ def runPolicies(demonstrations=20,
 		g = GridWorldEnv(copy.copy(gmap), noise=env_noise)
 		# print("Initialized")
 
+		g.generateRandomStartGoal()	
 		start = np.argwhere(g.map == g.START)[0]
 		goal = np.argwhere(g.map == g.GOAL)[0]
 		#generate trajectories start in same room and end different room
@@ -60,7 +61,7 @@ def runPolicies(demonstrations=20,
 		for t in traj:
 			a = np.zeros(shape=(4,1))
 
-			s = np.zeros(shape=(10,20))
+			s = np.zeros(shape=(8,9))
 
 			a[t[1]] = 1
 
@@ -98,7 +99,7 @@ def runPolicies(demonstrations=20,
 
 		for s in states:
 
-			t = np.zeros(shape=(10,20))
+			t = np.zeros(shape=(8,9))
 
 			t[s[0],s[1]] = 1
 			#t[2:4,0] = np.argwhere(g.map == g.START)[0]
