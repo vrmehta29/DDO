@@ -17,7 +17,7 @@ def runPolicies(demonstrations=10,
         learning_rate=1e-3,
         env_noise=0.1):
 
-    m  = GridWorldModel((3,1), (4,1), 2)
+    m  = GridWorldModel(2, (3,1), (4,1), 2)
 
     MAP_NAME = 'resources/GridWorldMaps/experiment4.txt'
     gmap = np.loadtxt(MAP_NAME, dtype=np.uint8)
@@ -41,7 +41,7 @@ def runPolicies(demonstrations=10,
         full_traj.append(new_traj)
         vis_traj.extend(new_traj)
 
-    g.visualizePlan(vis_traj,blank=True, filename="resources/results/exp4-trajs.png")
+    # g.visualizePlan(vis_traj,blank=True, filename="resources/results/exp4-trajs.png")
 
 
 
@@ -113,6 +113,7 @@ def runPolicies(demonstrations=10,
 
         g.visualizePolicy(policy_hash, trans_hash, blank=True, filename="resources/results/exp4-policy-"+str(i+m.k)+".png")
 
+runPolicies()
 
 
 

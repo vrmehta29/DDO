@@ -142,7 +142,7 @@ def multiLayerPerceptron(sdim,
     y = tf.nn.softmax(logit)
 
     #Sknote: a1 log(pred) - a2 log(1-pred)
-    logprob = tf.reshape(tf.nn.softmax_cross_entropy_with_logits(logit, a), [-1,1])
+    logprob = tf.reshape(tf.nn.softmax_cross_entropy_with_logits(logits = logit, labels = a), [-1,1])
 
     wlogprob = tf.multiply(weight, logprob)
         
@@ -343,14 +343,20 @@ def gridWorldTabular(xcard, ycard, adim):
 
     table = tf.Variable(tf.abs(tf.random_normal([xcard, ycard, adim])))
 
+    # Dimension: (None, xcard, ycard, adim)
     inputx = tf.tile(tf.reshape(x, [-1, xcard, ycard, 1]), [1, 1, 1, adim])
 
+    # Dimension: (None, adim)
     collapse = tf.reduce_sum(tf.reduce_sum(tf.multiply(inputx, table), 1), 1)
 
+    # Dimension: (None, 1)
     normalization = tf.reduce_sum(tf.abs(collapse),1)
     
+    # Dimesnion: (None, adim), gives action probabilities
     actionsP = tf.abs(collapse) / tf.tile(tf.reshape(normalization, [-1, 1]), [1, adim])
 
+    # Dimension: (None, 1)
+    # I think it should be reduce sum
     y = tf.reduce_mean(tf.multiply(a, actionsP), 1)
 
     logprob = -tf.log1p(y)

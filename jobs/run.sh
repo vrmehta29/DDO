@@ -12,4 +12,4 @@ cd /storage/home/vrmehta29/DDO/
 # Run the code. The -u option is used here to use unbuffered writes
 # so that output is piped to the file as and when it is produced.
 # Here, the code is the MNIST Tensorflow example.
-python -u experiment1.py &> out
+python -u experiment1a.py &> out
