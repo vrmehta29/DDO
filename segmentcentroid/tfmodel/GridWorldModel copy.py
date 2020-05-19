@@ -10,8 +10,8 @@ class GridWorldModel(TFSeparableModel):
     def __init__(self, 
                  k,
                  statedim=(2,1), 
-                 actiondim=(4,1),  
-                 hidden_layer=8): 
+                 actiondim=(4,1), 
+                 hidden_layer=8):
 
         self.hidden_layer = hidden_layer
         

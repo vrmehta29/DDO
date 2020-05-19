@@ -416,7 +416,7 @@ class TFModel(object):
         kmeans = KMeans(n_clusters=self.k, init ='k-means++')
         kmeans.fit(state_action_array)
 
-        """
+        
         from sklearn.decomposition import PCA
         import matplotlib.pyplot as plt
         p = PCA(n_components=2)
@@ -424,7 +424,7 @@ class TFModel(object):
         plt.scatter(x[:,0], x[:,1])
         plt.show()
         raise ValueError("Break Point")
-        """
+        
 
         for i in range(vqiterations):
             batch = self.sampleInitializationBatch(X, vqbatchsize, kmeans)

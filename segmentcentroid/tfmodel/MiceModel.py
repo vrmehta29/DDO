@@ -9,9 +9,9 @@ class GridWorldModel(TFSeparableModel):
     #The action dimension for this will have to change?  Hidden layers can stay the same 
     def __init__(self, 
                  k,
-                 statedim=(2,1), 
-                 actiondim=(4,1),  
-                 hidden_layer=8): 
+                 statedim=(12,2), 
+                 actiondim=(4,1), 
+                 hidden_layer=8):
 
         self.hidden_layer = hidden_layer
         
@@ -21,11 +21,11 @@ class GridWorldModel(TFSeparableModel):
     def createPolicyNetwork(self):
 
         #return multiLayerPerceptron(self.statedim[0], self.actiondim[0])
-        return gridWorldTabular(8, 9, 4)
+        return gridWorldTabular(12, 2, 4)
 
     def createTransitionNetwork(self):
 
-        return gridWorldTabular(8, 9, 2)
+        return gridWorldTabular(12, 2, 2)
 
         
 

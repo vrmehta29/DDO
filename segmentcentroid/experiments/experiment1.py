@@ -113,7 +113,7 @@ def runPolicies(demonstrations=20,
             trans_hash[s] = np.ravel(m.evalpsi(i, [(t, actions[1,:])]))
 
         g.visualizePolicy(policy_hash, trans_hash, blank=True, filename="resources/results/exp1-policy"+str(i)+".png")
-
+    
 
 
 
